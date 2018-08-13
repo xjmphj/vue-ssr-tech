@@ -24,6 +24,10 @@ const config = {
           loader:'vue-loader'
         },
         {
+          test:/\.jsx$/,
+          loader:'babel-loader'
+        },
+        {
           test:/\.css$/,
           use:[
             'style-loader',
@@ -35,6 +39,12 @@ const config = {
           use:[
             'style-loader',
             'css-loader',
+            {
+              loader:'postcss-loader', //用于优化生成后的css，更加浏览器添加一些前缀 ，比如webkit moz
+              options:{
+                sourceMap:true,  //用于直接引用 stylus-loder 里面的sourceMap ,优化编译过程
+              }
+            },
             'stylus-loader'
           ]
         },
